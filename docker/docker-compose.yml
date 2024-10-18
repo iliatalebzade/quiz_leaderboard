@@ -1,0 +1,36 @@
+version: '3.8'
+
+services:
+  # app:
+  #   build: .
+  #   container_name: my_app
+  #   ports:
+  #     - "8000:8000"
+  #   environment:
+  #     MONGODB_URI: "mongodb://mongo:27017/mydb"
+  #     REDIS_ADDR: "redis:6379"
+  #   depends_on:
+  #     - mongo
+  #     - redis
+
+  mongo:
+    image: mongo:6.0
+    container_name: mongo
+    ports:
+      - "27017:27017"
+    environment:
+      MONGO_INITDB_DATABASE: mydb
+    volumes:
+      - mongo-data:/data/db
+
+  redis:
+    image: redis:7.0
+    container_name: redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis-data:/data
+
+volumes:
+  mongo-data:
+  redis-data:
