@@ -14,7 +14,7 @@ RUN go mod download
 COPY . .
 
 # Build the Go application
-RUN go build -o main .
+RUN go build -o main ./cmd/main.go
 
 # Step 2: Create a lightweight container to run the app
 FROM alpine:latest
